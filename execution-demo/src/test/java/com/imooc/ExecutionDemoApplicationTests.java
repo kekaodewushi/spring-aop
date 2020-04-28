@@ -32,11 +32,11 @@ public class ExecutionDemoApplicationTests {
 		productService.findByTwoArgs(1L,"hello");
 		productService.getName();
 
-//		try {
-//			productService.exDemo();
-//		} catch (IllegalAccessException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			productService.exDemo();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
 
         productService.log();
         subService.demo();
