@@ -129,3 +129,62 @@
         System.out.println("matchArgs ###before");
     }
 ```
+#### 注解匹配annotation()，@within()，@target(),@args()
+匹配单个参数或多个参数
+*支持运算符*
+
+1：annotation（）,使用到指定注解的方法被拦截
+---
+```$xslt
+    @Pointcut("@annotation(com.imooc.anno.AdminOnly) ")
+    public void matchAnno(){}
+
+    @Before("matchAnno()")
+    public void before() {
+        System.out.println("");
+        System.out.println("matchAnno###before");
+    }
+
+    @AdminOnly
+    public void log() {
+        System.out.println("LogService log from LogService");
+    }
+```
+2：@within()，@target(),使用到指定注解的类被拦截，可以被继承
+---
+```$xslt
+    @Pointcut("@within(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
+        public void matchAnno() {
+        }
+
+   // @Pointcut("@target(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
+   //     public void matchAnno() {
+   //     }
+
+    @Before("matchAnno()")
+    public void before() {
+        System.out.println("");
+        System.out.println("matchAnno###before");
+    }
+
+```
+3：@args(),在需要被拦截的model上使用该注解，使用该model作为传参的方法会被拦截。
+---
+```$xslt
+    @Pointcut("@args(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
+        public void matchAnno(){}
+
+    @Before("matchAnno()")
+    public void before() {
+        System.out.println("");
+        System.out.println("matchAnno###before");
+    }
+
+    @NeedSecured
+    public class Product {
+    }
+    public void annoArg(Product product){
+        System.out.println("LogService execute log service annoArg");
+    }
+
+```

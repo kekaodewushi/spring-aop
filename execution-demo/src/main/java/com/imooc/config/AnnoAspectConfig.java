@@ -21,13 +21,13 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AnnoAspectConfig {
-//
-//    @Pointcut("@args(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
-//    public void matchAnno(){}
 
-    @Pointcut("@within(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
-    public void matchAnno() {
-    }
+    @Pointcut("@args(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
+    public void matchAnno(){}
+
+//    @Pointcut("@within(com.imooc.anno.NeedSecured) && within(com.imooc..*)")
+//    public void matchAnno() {
+//    }
 
 //    @Pointcut("@annotation(com.imooc.anno.AdminOnly) ")
 //    public void matchAnno(){}
