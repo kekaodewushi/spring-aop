@@ -198,3 +198,9 @@
 4:@AfterTrowing 异常通知，抛出异常之后
 
 5:@Around 环绕通知
+
+###织入的时机 
+1: 编译期（AspectJ）
+2: 类加载时（AspectJ 5+）
+3: 运行时（Spring AOP）
+ 详情见proxy-demo目录内README.md
